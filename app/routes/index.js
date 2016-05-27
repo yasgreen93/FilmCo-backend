@@ -11,7 +11,7 @@ router.get('/films/api', function(req, res, next) {
   var options = {IdType: "EAN", SearchIndex: "DVD", ItemId: req.barcodeNum};
 
   return prodAdv.call("ItemLookup", options, function(err, result) {
-    res.json(result);
+    res.send(result);
   });
 });
 
