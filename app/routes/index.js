@@ -17,12 +17,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/films/api', function(req, res, next) {
-  console.log(req);
   var prodAdv = aws.createProdAdvClient(accessKeyId, secretAccessKey, associateTag);
   var options = {IdType: "EAN", SearchIndex: "DVD", ItemId: req.barcodeNum};
 
   return prodAdv.call("ItemLookup", options, function(err, result) {
-    res.send(result);
+    result.send(result);
   });
 });
 
