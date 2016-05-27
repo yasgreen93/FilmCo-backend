@@ -1,13 +1,17 @@
 var express = require('express');
 var router = express.Router();
 var aws = require("../../node_modules/aws-lib/lib/aws");
+require('dotenv').config();
+var accessKeyId = process.env.AWS_ACCESS_KEY;
+var secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+var associateTag = process.env.AWS_ASSOCIATE_TAG;
 
 router.get('/', function(req, res, next) {
   res.render('index');
 });
 
 router.get('/films/api', function(req, res, next) {
-  var prodAdv = aws.createProdAdvClient(yourAccessKeyId, yourSecretAccessKey, yourAssociateTag);
+  var prodAdv = aws.createProdAdvClient(accessKeyId, secretAccessKey, associateTag);
   var options = {IdType: "EAN", SearchIndex: "DVD", ItemId: req.barcodeNum};
 
   return prodAdv.call("ItemLookup", options, function(err, result) {
