@@ -8,7 +8,7 @@ var associateTag = process.env.AWS_ASSOCIATE_TAG;
 
 router.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, dataType");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
@@ -18,10 +18,10 @@ router.get('/', function(req, res, next) {
 
 router.get('/films/api', function(req, res, next) {
   var prodAdv = aws.createProdAdvClient(accessKeyId, secretAccessKey, associateTag);
-  var options = {IdType: "EAN", SearchIndex: "DVD", ItemId: req.barcodeNum};
+  var options = {IdType: "EAN", SearchIndex: "DVD", ItemId: req.barcode};
 
   return prodAdv.call("ItemLookup", options, function(err, result) {
-    result.send(result);
+    res.send(result);
   });
 });
 
