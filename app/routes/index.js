@@ -6,6 +6,12 @@ var accessKeyId = process.env.AWS_ACCESS_KEY;
 var secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 var associateTag = process.env.AWS_ASSOCIATE_TAG;
 
+router.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 router.get('/', function(req, res, next) {
   res.render('index');
 });
