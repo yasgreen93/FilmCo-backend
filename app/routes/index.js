@@ -17,7 +17,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/films/api', function(req, res, next) {
-  console.log(req);
+  var num = "5050582556148";
+  console.log(num);
   var barcode = req.barcodeNum;
   var prodAdv = aws.createProdAdvClient(accessKeyId, secretAccessKey, associateTag);
   var options = {IdType: "EAN", SearchIndex: "DVD", ItemId: req.barcodeNum};
