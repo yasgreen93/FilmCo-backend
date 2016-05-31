@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var aws = require("../../node_modules/aws-lib/lib/aws");
+var aws = require("../private/aws-lib/lib/aws");
 require('dotenv').config();
 var accessKeyId = process.env.AWS_ACCESS_KEY;
 var secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
