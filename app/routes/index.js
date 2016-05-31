@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-router.get('/films/api', function(req, res, next) {
+router.post('/films/api', function(req, res, next) {
   console.log("REQ: START");
   console.log(req);
   console.log("REQ: END");
