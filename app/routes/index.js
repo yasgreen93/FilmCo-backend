@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-router.post('/films/api', function(req, res, next) {
+router.get('/films/api', function(req, res, next) {
   console.log(req);
   var barcode = req.barcodeNum;
   var prodAdv = aws.createProdAdvClient(accessKeyId, secretAccessKey, associateTag);
