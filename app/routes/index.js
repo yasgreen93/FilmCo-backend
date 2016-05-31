@@ -17,6 +17,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/films/api', function(req, res, next) {
+  console.log("Backend request...");
+  console.log(req);
   var prodAdv = aws.createProdAdvClient(accessKeyId, secretAccessKey, associateTag);
   var options = {IdType: "EAN", SearchIndex: "DVD", ItemId: "5050582556148"};
 
