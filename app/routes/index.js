@@ -18,11 +18,11 @@ router.get('/', function(req, res, next) {
 
 router.post('/films/api', function(req, res, next) {
   console.log("REQ: START");
-  console.log(req);
+  console.log(req.body.barcodeNum);
   console.log("REQ: END");
   var barcode = req.barcodeNum;
   var prodAdv = aws.createProdAdvClient(accessKeyId, secretAccessKey, associateTag);
-  var options = {IdType: "EAN", SearchIndex: "DVD", ItemId: req.barcodeNum};
+  var options = {IdType: "EAN", SearchIndex: "DVD", ItemId: req.body.barcodeNum};
 
   return prodAdv.call("ItemLookup", options, function(err, result) {
     res.send(result);
