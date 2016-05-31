@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/films/api', function(req, res, next) {
   var prodAdv = aws.createProdAdvClient(accessKeyId, secretAccessKey, associateTag);
-  var options = {IdType: "EAN", SearchIndex: "DVD", ItemId: req.barcodeNum};
+  var options = {IdType: "EAN", SearchIndex: "DVD", ItemId: "5050582556148"};
 
   return prodAdv.call("ItemLookup", options, function(err, result) {
     res.send(result);
