@@ -25,9 +25,11 @@ router.get('/films/api', function(req, res, next) {
   //   res.send(result);
   // });
 
-  function testFunction(err, result) {
-    return res.send(req);
-  }
+  return testFunction();
 });
+
+function testFunction(err, result) {
+  return res.send(req);
+}
 
 module.exports = router;
